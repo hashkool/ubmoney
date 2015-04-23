@@ -40,7 +40,7 @@ class Money
      */
     public function __construct($amount, Currency $currency)
     {
-        self::assertNumeric($amount);
+        static::assertNumeric($amount);
 
         $this->amount = (string) $amount;
         $this->currency = $currency;
@@ -60,7 +60,7 @@ class Money
      */
     public static function __callStatic($method, $arguments)
     {
-        return new self($arguments[0], Currency::fromCode($method));
+        return new static($arguments[0], Currency::fromCode($method));
     }
 
     /**
@@ -77,7 +77,7 @@ class Money
             $currency = new Currency($currency);
         }
 
-        return new self($amount, $currency);
+        return new static($amount, $currency);
     }
 
     /**
@@ -89,7 +89,7 @@ class Money
      */
     private function newInstance($amount)
     {
-        return new self($amount, $this->currency);
+        return new static($amount, $this->currency);
     }
 
     /**
@@ -124,7 +124,7 @@ class Money
     {
         $this->assertSameCurrencyAs($addend);
 
-        $amount = bcadd($this->amount, $addend->amount, self::SCALE);
+        $amount = bcadd($this->amount, $addend->amount, static::SCALE);
 
         return $this->newInstance($amount);
     }
@@ -141,7 +141,7 @@ class Money
     {
         $this->assertSameCurrencyAs($subtrahend);
 
-        $amount = bcsub($this->amount, $subtrahend->amount, self::SCALE);
+        $amount = bcsub($this->amount, $subtrahend->amount, static::SCALE);
 
         return $this->newInstance($amount);
     }
@@ -156,9 +156,9 @@ class Money
      */
     public function multiplyBy($multiplier)
     {
-        self::assertNumeric($multiplier);
+        static::assertNumeric($multiplier);
 
-        $amount = bcmul($this->amount, (string) $multiplier, self::SCALE);
+        $amount = bcmul($this->amount, (string) $multiplier, static::SCALE);
 
         return $this->newInstance($amount);
     }
@@ -173,9 +173,9 @@ class Money
      */
     public function divideBy($divisor)
     {
-        self::assertNumeric($divisor);
+        static::assertNumeric($divisor);
 
-        $amount = bcdiv($this->amount, (string) $divisor, self::SCALE);
+        $amount = bcdiv($this->amount, (string) $divisor, static::SCALE);
 
         return $this->newInstance($amount);
     }
@@ -209,9 +209,9 @@ class Money
      */
     public function convertTo(Currency $targetCurrency, $conversionRate)
     {
-        self::assertNumeric($conversionRate);
+        static::assertNumeric($conversionRate);
 
-        $amount = bcmul($this->amount, (string) $conversionRate, self::SCALE);
+        $amount = bcmul($this->amount, (string) $conversionRate, static::SCALE);
 
         return new Money($amount, $targetCurrency);
     }

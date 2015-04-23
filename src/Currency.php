@@ -43,7 +43,7 @@ class Currency
      */
     public static function fromCode($code)
     {
-        return new self($code);
+        return new static($code);
     }
 
     /**
