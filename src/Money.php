@@ -32,16 +32,17 @@ class Money
      */
     protected $currency;
 
-
     /**
-     * @param string $amount Amount, expressed as a string (eg '10.00')
+     * @param string|int|float $amount Amount, expressed as a numeric value
      * @param Currency $currency
      *
      * @throws InvalidArgumentException If amount is not a numeric string value
      */
-    private function __construct($amount, Currency $currency)
+    public function __construct($amount, Currency $currency)
     {
-        $this->amount = $amount;
+        self::assertNumeric($amount);
+
+        $this->amount = (string) $amount;
         $this->currency = $currency;
     }
 
@@ -59,9 +60,7 @@ class Money
      */
     public static function __callStatic($method, $arguments)
     {
-        self::assertNumeric($arguments[0]);
-
-        return new self((string) $arguments[0], Currency::fromCode($method));
+        return new self($arguments[0], Currency::fromCode($method));
     }
 
     /**
@@ -74,9 +73,7 @@ class Money
      */
     public static function fromAmount($amount, Currency $currency)
     {
-        self::assertNumeric($amount);
-
-        return new self((string) $amount, $currency);
+        return new self($amount, $currency);
     }
 
     /**
