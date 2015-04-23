@@ -73,7 +73,7 @@ final class CurrencyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Celtric\UbMoney\InvalidArgumentException
+     * @expectedException \Celtric\UbMoney\InvalidArgumentException
      */
     public function testNonStringCode()
     {
@@ -81,7 +81,7 @@ final class CurrencyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Celtric\UbMoney\InvalidArgumentException
+     * @expectedException \Celtric\UbMoney\InvalidArgumentException
      */
     public function testNon3LetterCode()
     {

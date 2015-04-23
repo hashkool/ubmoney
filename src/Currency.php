@@ -66,7 +66,11 @@ final class Currency
         return $this->code === $other->code;
     }
 
-    public function __toString() {
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
         return $this->code;
     }
 }

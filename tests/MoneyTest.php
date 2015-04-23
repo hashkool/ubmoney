@@ -46,7 +46,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Celtric\UbMoney\InvalidArgumentException
+     * @expectedException \Celtric\UbMoney\InvalidArgumentException
      */
     public function testNonNumericStringsThrowException()
     {
@@ -96,7 +96,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Celtric\UbMoney\InvalidArgumentException
+     * @expectedException \Celtric\UbMoney\InvalidArgumentException
      */
     public function testDifferentCurrenciesCannotBeAdded()
     {
@@ -136,7 +136,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Celtric\UbMoney\InvalidArgumentException
+     * @expectedException \Celtric\UbMoney\InvalidArgumentException
      */
     public function testDifferentCurrenciesCannotBeSubtracted()
     {
@@ -161,7 +161,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Celtric\UbMoney\InvalidArgumentException
+     * @expectedException \Celtric\UbMoney\InvalidArgumentException
      */
     public function testInvalidMultiplicationOperand()
     {
@@ -284,7 +284,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Celtric\UbMoney\InvalidArgumentException
+     * @expectedException \Celtric\UbMoney\InvalidArgumentException
      */
     public function testDifferentCurrenciesCannotBeCompared()
     {
