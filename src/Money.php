@@ -67,7 +67,7 @@ final class Money
     /**
      * Creates a Money object from its amount and currency
      *
-     * @param numeric $amount
+     * @param string|int|float $amount A numeric value
      * @param Currency $currency
      *
      * @return Money
@@ -149,7 +149,7 @@ final class Money
      * Returns a new Money object that represents
      * the multiplied value by the given factor
      *
-     * @param numeric $multiplier
+     * @param string|int|float $multiplier A numeric value
      *
      * @return Money
      */
@@ -166,7 +166,7 @@ final class Money
      * Returns a new Money object that represents
      * the divided value by the given factor
      *
-     * @param numeric $divisor
+     * @param string|int|float $divisor A numeric value
      *
      * @return Money
      */
@@ -202,7 +202,7 @@ final class Money
      * a given target currency with a given conversion rate
      *
      * @param Currency $targetCurrency
-     * @param numeric $conversionRate
+     * @param string|int|float $conversionRate A numeric value
      *
      * @return Money
      */
@@ -360,7 +360,7 @@ final class Money
     /**
      * Asserts that a value is a valid numeric string
      *
-     * @param numeric $value
+     * @param string|int|float $value A numeric value
      *
      * @throws InvalidArgumentException If $other has a different currency
      */
