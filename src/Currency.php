@@ -23,8 +23,14 @@ class Currency
     /**
      * @param string $code
      */
-    private function __construct($code)
+    public function __construct($code)
     {
+        if (!is_string($code) || strlen($code) !== 3) {
+            throw new InvalidArgumentException(
+                'Currency code should be 3 letter ISO code'
+            );
+        }
+
         $this->code = strtoupper($code);
     }
 
@@ -37,10 +43,6 @@ class Currency
      */
     public static function fromCode($code)
     {
-        if (!is_string($code) || strlen($code) !== 3) {
-            throw new InvalidArgumentException('Currency code should be 3 letter ISO code');
-        }
-
         return new self($code);
     }
 

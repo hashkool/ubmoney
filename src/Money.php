@@ -67,12 +67,16 @@ class Money
      * Creates a Money object from its amount and currency
      *
      * @param string|int|float $amount A numeric value
-     * @param Currency $currency
+     * @param Currency|string $currency
      *
      * @return Money
      */
-    public static function fromAmount($amount, Currency $currency)
+    public static function fromAmount($amount, $currency)
     {
+        if (!$currency instanceof Currency) {
+            $currency = new Currency($currency);
+        }
+
         return new self($amount, $currency);
     }
 

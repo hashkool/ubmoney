@@ -36,6 +36,15 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Celtric\UbMoney\Money', $money);
     }
 
+    /**
+     * @covers ::fromAmount
+     */
+    public function testStaticConstructorAcceptsCurrencyAsString()
+    {
+        $money = Money::fromAmount('100', 'EUR');
+        $this->assertInstanceOf('Celtric\UbMoney\Money', $money);
+    }
+
     public function testNumericValues()
     {
         $money = Money::EUR('100');
