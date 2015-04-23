@@ -334,8 +334,6 @@ final class Money
      * if the value of this object is considered to be respectively
      * less than, equal to, or greater than 0
      *
-     * @param Money $other
-     *
      * @return int
      */
     private function compareTo0()
