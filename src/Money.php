@@ -192,7 +192,7 @@ class Money
         if (!is_int($scale)) {
             throw new InvalidArgumentException('Scale is not an integer');
         }
-        $add = '0.'. str_repeat('0', $scale) . '5';
+        $add = '0.' . str_repeat('0', $scale) . '5';
         $newAmount = bcadd($this->amount, $add, $scale);
 
         return $this->newInstance($newAmount);
@@ -259,7 +259,7 @@ class Money
      */
     public function isLessThan(Money $other)
     {
-        return  $this->compareTo($other) === -1;
+        return $this->compareTo($other) === -1;
     }
 
     /**
@@ -366,7 +366,9 @@ class Money
     private static function assertNumeric($value)
     {
         if (!is_numeric($value)) {
-            throw new InvalidArgumentException('Amount must be a valid numeric value');
+            throw new InvalidArgumentException(
+                'Amount must be a valid numeric value'
+            );
         }
     }
 }
