@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Money;
+namespace Celtric\UbMoney;
 
 /**
  * @coversDefaultClass Money\Currency
@@ -73,7 +73,7 @@ final class CurrencyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Money\InvalidArgumentException
+     * @expectedException Celtric\UbMoney\InvalidArgumentException
      */
     public function testNonStringCode()
     {
@@ -81,7 +81,7 @@ final class CurrencyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Money\InvalidArgumentException
+     * @expectedException Celtric\UbMoney\InvalidArgumentException
      */
     public function testNon3LetterCode()
     {

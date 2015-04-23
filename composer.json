@@ -1,8 +1,8 @@
 {
-    "name": "ulabox/money",
+    "name": "celtric/ubmoney",
     "description": "Yet another PHP implementation of the Money value object using BCMath",
     "keywords": ["Money", "Value Object", "BCMath"],
-    "homepage": "https://github.com/ulabox/money",
+    "homepage": "https://github.com/celtric/ubmoney",
     "license": "MIT",
     "authors": [
         {
@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Money\\": "src/"
+            "Celtric\\UbMoney\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Money\\": "tests/"
+            "Celtric\\UbMoney\\": "tests/"
         }
     }
 }

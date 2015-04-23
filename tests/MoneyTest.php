@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Money;
+namespace Celtric\UbMoney;
 
 /**
  * @coversDefaultClass Money\Money
@@ -24,7 +24,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     public function testFactoryMethod()
     {
         $money = Money::EUR(25);
-        $this->assertInstanceOf('Money\Money', $money);
+        $this->assertInstanceOf('Celtric\UbMoney\Money', $money);
     }
 
     /**
@@ -33,7 +33,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     public function testFromAmountAndCurrency()
     {
         $money = Money::fromAmount('100', Currency::fromCode('EUR'));
-        $this->assertInstanceOf('Money\Money', $money);
+        $this->assertInstanceOf('Celtric\UbMoney\Money', $money);
     }
 
     public function testNumericValues()
@@ -46,7 +46,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Money\InvalidArgumentException
+     * @expectedException Celtric\UbMoney\InvalidArgumentException
      */
     public function testNonNumericStringsThrowException()
     {
@@ -96,7 +96,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Money\InvalidArgumentException
+     * @expectedException Celtric\UbMoney\InvalidArgumentException
      */
     public function testDifferentCurrenciesCannotBeAdded()
     {
@@ -136,7 +136,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Money\InvalidArgumentException
+     * @expectedException Celtric\UbMoney\InvalidArgumentException
      */
     public function testDifferentCurrenciesCannotBeSubtracted()
     {
@@ -161,7 +161,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Money\InvalidArgumentException
+     * @expectedException Celtric\UbMoney\InvalidArgumentException
      */
     public function testInvalidMultiplicationOperand()
     {
@@ -284,7 +284,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Money\InvalidArgumentException
+     * @expectedException Celtric\UbMoney\InvalidArgumentException
      */
     public function testDifferentCurrenciesCannotBeCompared()
     {

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
 */
 
-namespace Money;
+namespace Celtric\UbMoney;
 
 final class InvalidArgumentException extends \InvalidArgumentException
 {
