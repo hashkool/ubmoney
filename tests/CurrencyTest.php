@@ -12,9 +12,9 @@
 namespace Celtric\UbMoney;
 
 /**
- * @coversDefaultClass Money\Currency
- * @uses Money\Currency
- * @uses Money\Money
+ * @coversDefaultClass Celtric\UbMoney\Currency
+ * @uses Celtric\UbMoney\Currency
+ * @uses Celtric\UbMoney\Money
  */
 final class CurrencyTest extends \PHPUnit_Framework_TestCase
 {
