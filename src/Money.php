@@ -11,7 +11,7 @@
 
 namespace Celtric\UbMoney;
 
-final class Money
+class Money
 {
     /**
      * The scale used in BCMath calculations

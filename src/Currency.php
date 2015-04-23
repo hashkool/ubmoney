@@ -11,7 +11,7 @@
 
 namespace Celtric\UbMoney;
 
-final class Currency
+class Currency
 {
     /**
      * Currency 3 letter ISO code

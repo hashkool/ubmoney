@@ -11,6 +11,6 @@
 
 namespace Celtric\UbMoney;
 
-final class InvalidArgumentException extends \InvalidArgumentException
+class InvalidArgumentException extends \InvalidArgumentException
 {
 }
