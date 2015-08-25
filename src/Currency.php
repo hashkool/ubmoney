@@ -39,7 +39,7 @@ class Currency
      *
      * @param string $code
      *
-     * @return Currency
+     * @return static
      */
     public static function fromCode($code)
     {

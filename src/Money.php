@@ -56,7 +56,7 @@ class Money
      * @param string $method
      * @param array $arguments
      *
-     * @return Money
+     * @return static
      */
     public static function __callStatic($method, $arguments)
     {
@@ -69,7 +69,7 @@ class Money
      * @param string|int|float $amount A numeric value
      * @param Currency|string $currency
      *
-     * @return Money
+     * @return static
      */
     public static function fromAmount($amount, $currency)
     {
@@ -85,7 +85,7 @@ class Money
      *
      * @param string $amount
      *
-     * @return Money
+     * @return static
      */
     private function newInstance($amount)
     {
@@ -118,7 +118,7 @@ class Money
      *
      * @param Money $addend
      *
-     * @return Money
+     * @return static
      */
     public function add(Money $addend)
     {
@@ -135,7 +135,7 @@ class Money
      *
      * @param Money $subtrahend
      *
-     * @return Money
+     * @return static
      */
     public function subtract(Money $subtrahend)
     {
@@ -152,7 +152,7 @@ class Money
      *
      * @param string|int|float $multiplier A numeric value
      *
-     * @return Money
+     * @return static
      */
     public function multiplyBy($multiplier)
     {
@@ -169,7 +169,7 @@ class Money
      *
      * @param string|int|float $divisor A numeric value
      *
-     * @return Money
+     * @return static
      */
     public function divideBy($divisor)
     {
@@ -185,7 +185,7 @@ class Money
      *
      * @param integer $scale
      *
-     * @return Money
+     * @return static
      */
     public function round($scale = 0)
     {
@@ -205,7 +205,7 @@ class Money
      * @param Currency $targetCurrency
      * @param string|int|float $conversionRate A numeric value
      *
-     * @return Money
+     * @return static
      */
     public function convertTo(Currency $targetCurrency, $conversionRate)
     {
