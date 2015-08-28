@@ -170,10 +170,15 @@ class Money
      * @param string|int|float $divisor A numeric value
      *
      * @return static
+     * @throws InvalidArgumentException In case divisor is zero.
      */
     public function divideBy($divisor)
     {
         static::assertNumeric($divisor);
+
+        if (0 === bccomp((string) $divisor, '', self::SCALE)) {
+            throw new InvalidArgumentException('Divisor cannot be 0.');
+        }
 
         $amount = bcdiv($this->amount, (string) $divisor, static::SCALE);
 
@@ -327,7 +332,7 @@ class Money
     {
         $this->assertSameCurrencyAs($other);
 
-        return bccomp($this->amount, $other->amount);
+        return bccomp($this->amount, $other->amount, static::SCALE);
     }
 
     /**
@@ -339,7 +344,7 @@ class Money
      */
     private function compareTo0()
     {
-        return bccomp($this->amount, '');
+        return bccomp($this->amount, '', self::SCALE);
     }
 
     /**
