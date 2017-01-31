@@ -14,9 +14,9 @@ namespace Celtric\UbMoney;
 class Money
 {
     /**
-     * The scale used in BCMath calculations
+     * The scale used in BCMath calculations, suitable for bitcoin
      */
-    const SCALE = 4;
+    const SCALE = 8;
 
     /**
      * The money amount
