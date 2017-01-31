@@ -14,46 +14,46 @@ namespace Celtric\UbMoney;
 class Currency
 {
     /**
-     * Currency 3 letter ISO code
+     * Currency identifying 3 letter ISO code
      *
      * @var string
      */
-    private $code;
+    private $isoCode;
 
     /**
-     * @param string $code
+     * @param string $isoCode
      */
-    public function __construct($code)
+    public function __construct($isoCode)
     {
-        if (!is_string($code) || strlen($code) !== 3) {
+        if (!is_string($isoCode) || strlen($isoCode) !== 3) {
             throw new InvalidArgumentException(
                 'Currency code should be 3 letter ISO code'
             );
         }
 
-        $this->code = strtoupper($code);
+        $this->isoCode = strtoupper($isoCode);
     }
 
     /**
-     * Creates a Currency from its code
+     * Creates a Currency from its ISO code
      *
-     * @param string $code
+     * @param string $isoCode
      *
      * @return static
      */
-    public static function fromCode($code)
+    public static function fromIsoCode($isoCode)
     {
-        return new static($code);
+        return new static($isoCode);
     }
 
     /**
-     * Returns the currency code
+     * Returns the currency ISO code
      *
      * @return string
      */
-    public function code()
+    public function getIsoCode()
     {
-        return $this->code;
+        return $this->isoCode;
     }
 
     /**
@@ -65,7 +65,7 @@ class Currency
      */
     public function equals(Currency $other)
     {
-        return $this->code === $other->code;
+        return $this->isoCode === $other->isoCode;
     }
 
     /**
@@ -73,6 +73,6 @@ class Currency
      */
     public function __toString()
     {
-        return $this->code;
+        return $this->isoCode;
     }
 }

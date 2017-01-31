@@ -23,9 +23,9 @@ final class CurrencyTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructor()
     {
-        $currency = Currency::fromCode('EUR');
+        $currency = Currency::fromIsoCode('EUR');
 
-        $this->assertEquals('EUR', $currency->code());
+        $this->assertEquals('EUR', $currency->getIsoCode());
     }
 
     /**
@@ -34,8 +34,8 @@ final class CurrencyTest extends \PHPUnit_Framework_TestCase
      */
     public function testCode()
     {
-        $currency = Currency::fromCode('EUR');
-        $this->assertEquals('EUR', $currency->code());
+        $currency = Currency::fromIsoCode('EUR');
+        $this->assertEquals('EUR', $currency->getIsoCode());
         $this->assertEquals('EUR', (string) $currency);
     }
 
@@ -44,10 +44,10 @@ final class CurrencyTest extends \PHPUnit_Framework_TestCase
      */
     public function testDifferentInstancesAreEqual()
     {
-        $c1 = Currency::fromCode('EUR');
-        $c2 = Currency::fromCode('EUR');
-        $c3 = Currency::fromCode('USD');
-        $c4 = Currency::fromCode('USD');
+        $c1 = Currency::fromIsoCode('EUR');
+        $c2 = Currency::fromIsoCode('EUR');
+        $c3 = Currency::fromIsoCode('USD');
+        $c4 = Currency::fromIsoCode('USD');
         $this->assertTrue($c1->equals($c2));
         $this->assertTrue($c3->equals($c4));
     }
@@ -57,8 +57,8 @@ final class CurrencyTest extends \PHPUnit_Framework_TestCase
      */
     public function testDifferentCurrenciesAreNotEqual()
     {
-        $c1 = Currency::fromCode('EUR');
-        $c2 = Currency::fromCode('USD');
+        $c1 = Currency::fromIsoCode('EUR');
+        $c2 = Currency::fromIsoCode('USD');
         $this->assertFalse($c1->equals($c2));
     }
 
@@ -67,8 +67,8 @@ final class CurrencyTest extends \PHPUnit_Framework_TestCase
      */
     public function testToUpper()
     {
-        $c1 = Currency::fromCode('EUR');
-        $c2 = Currency::fromCode('eur');
+        $c1 = Currency::fromIsoCode('EUR');
+        $c2 = Currency::fromIsoCode('eur');
         $this->assertTrue($c1->equals($c2));
     }
 
@@ -77,7 +77,7 @@ final class CurrencyTest extends \PHPUnit_Framework_TestCase
      */
     public function testNonStringCode()
     {
-        Currency::fromCode(1234);
+        Currency::fromIsoCode(1234);
     }
 
     /**
@@ -85,6 +85,6 @@ final class CurrencyTest extends \PHPUnit_Framework_TestCase
      */
     public function testNon3LetterCode()
     {
-        Currency::fromCode('FooBar');
+        Currency::fromIsoCode('FooBar');
     }
 }

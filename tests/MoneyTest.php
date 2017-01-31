@@ -32,7 +32,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testFromAmountAndCurrency()
     {
-        $money = Money::fromAmount('100', Currency::fromCode('EUR'));
+        $money = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
         $this->assertInstanceOf('Celtric\UbMoney\Money', $money);
     }
 
@@ -68,7 +68,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetters()
     {
-        $euro = Currency::fromCode('EUR');
+        $euro = Currency::fromIsoCode('EUR');
         $money = Money::fromAmount('100', $euro);
         $this->assertEquals('100', $money->amount());
         $this->assertEquals($euro, $money->currency());
@@ -79,10 +79,10 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddition()
     {
-        $m1 = Money::fromAmount('100', Currency::fromCode('EUR'));
-        $m2 = Money::fromAmount('100', Currency::fromCode('EUR'));
+        $m1 = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
+        $m2 = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
         $sum = $m1->add($m2);
-        $expected = Money::fromAmount('200', Currency::fromCode('EUR'));
+        $expected = Money::fromAmount('200', Currency::fromIsoCode('EUR'));
 
         $this->assertTrue($sum->equals($expected));
 
@@ -96,10 +96,10 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testAdditionWithDecimals()
     {
-        $m1 = Money::fromAmount('100', Currency::fromCode('EUR'));
-        $m2 = Money::fromAmount('0.01', Currency::fromCode('EUR'));
+        $m1 = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
+        $m2 = Money::fromAmount('0.01', Currency::fromIsoCode('EUR'));
         $sum = $m1->add($m2);
-        $expected = Money::fromAmount('100.01', Currency::fromCode('EUR'));
+        $expected = Money::fromAmount('100.01', Currency::fromIsoCode('EUR'));
 
         $this->assertTrue($sum->equals($expected));
     }
@@ -109,8 +109,8 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testDifferentCurrenciesCannotBeAdded()
     {
-        $m1 = Money::fromAmount('100', Currency::fromCode('EUR'));
-        $m2 = Money::fromAmount('100', Currency::fromCode('USD'));
+        $m1 = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
+        $m2 = Money::fromAmount('100', Currency::fromIsoCode('USD'));
         $m1->add($m2);
     }
 
@@ -119,10 +119,10 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testSubtraction()
     {
-        $m1 = Money::fromAmount('100', Currency::fromCode('EUR'));
-        $m2 = Money::fromAmount('200', Currency::fromCode('EUR'));
+        $m1 = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
+        $m2 = Money::fromAmount('200', Currency::fromIsoCode('EUR'));
         $diff = $m1->subtract($m2);
-        $expected = Money::fromAmount('-100', Currency::fromCode('EUR'));
+        $expected = Money::fromAmount('-100', Currency::fromIsoCode('EUR'));
 
         $this->assertTrue($diff->equals($expected));
 
@@ -136,10 +136,10 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testSubtractionWithDecimals()
     {
-        $m1 = Money::fromAmount('100.01', Currency::fromCode('EUR'));
-        $m2 = Money::fromAmount('200', Currency::fromCode('EUR'));
+        $m1 = Money::fromAmount('100.01', Currency::fromIsoCode('EUR'));
+        $m2 = Money::fromAmount('200', Currency::fromIsoCode('EUR'));
         $diff = $m1->subtract($m2);
-        $expected = Money::fromAmount('-99.99', Currency::fromCode('EUR'));
+        $expected = Money::fromAmount('-99.99', Currency::fromIsoCode('EUR'));
 
         $this->assertTrue($diff->equals($expected));
     }
@@ -149,8 +149,8 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testDifferentCurrenciesCannotBeSubtracted()
     {
-        $m1 = Money::fromAmount('100', Currency::fromCode('EUR'));
-        $m2 = Money::fromAmount('100', Currency::fromCode('USD'));
+        $m1 = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
+        $m2 = Money::fromAmount('100', Currency::fromIsoCode('USD'));
         $m1->subtract($m2);
     }
 
@@ -159,9 +159,9 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testMultiplication()
     {
-        $money = Money::fromAmount('100', Currency::fromCode('EUR'));
-        $expected1 = Money::fromAmount('200', Currency::fromCode('EUR'));
-        $expected2 = Money::fromAmount('101', Currency::fromCode('EUR'));
+        $money = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
+        $expected1 = Money::fromAmount('200', Currency::fromIsoCode('EUR'));
+        $expected2 = Money::fromAmount('101', Currency::fromIsoCode('EUR'));
 
         $this->assertTrue($money->multiplyBy(2)->equals($expected1));
         $this->assertTrue($money->multiplyBy('1.01')->equals($expected2));
@@ -174,7 +174,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidMultiplicationOperand()
     {
-        $money = Money::fromAmount('100', Currency::fromCode('EUR'));
+        $money = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
         $money->multiplyBy('operand');
     }
 
@@ -183,10 +183,10 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testDivision()
     {
-        $money = Money::fromAmount('30', Currency::fromCode('EUR'));
-        $expected1 = Money::fromAmount('15', Currency::fromCode('EUR'));
-        $expected2 = Money::fromAmount('3.33333333333', Currency::fromCode('EUR'));
-        $expected3 = Money::fromAmount('-3', Currency::fromCode('EUR'));
+        $money = Money::fromAmount('30', Currency::fromIsoCode('EUR'));
+        $expected1 = Money::fromAmount('15', Currency::fromIsoCode('EUR'));
+        $expected2 = Money::fromAmount('3.33333333333', Currency::fromIsoCode('EUR'));
+        $expected3 = Money::fromAmount('-3', Currency::fromIsoCode('EUR'));
 
         $this->assertTrue($money->divideBy(2)->equals($expected1));
         $this->assertTrue($money->divideBy(9)->equals($expected2));
@@ -200,7 +200,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testDivisorIsNumericZero()
     {
-        $money = Money::fromAmount('30', Currency::fromCode('EUR'));
+        $money = Money::fromAmount('30', Currency::fromIsoCode('EUR'));
         $money->divideBy(0)->amount();
     }
 
@@ -209,7 +209,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testDivisorIsFloatZero()
     {
-        $money = Money::fromAmount('30', Currency::fromCode('EUR'));
+        $money = Money::fromAmount('30', Currency::fromIsoCode('EUR'));
         $money->divideBy(0.0)->amount();
     }
 
@@ -218,7 +218,7 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testDivisorIsStringZero()
     {
-        $money = Money::fromAmount('30', Currency::fromCode('EUR'));
+        $money = Money::fromAmount('30', Currency::fromIsoCode('EUR'));
         $money->divideBy('0')->amount();
     }
 
@@ -227,9 +227,9 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testRoundWithoutRounding()
     {
-        $money = Money::fromAmount('3.33333333333', Currency::fromCode('EUR'));
-        $expected1 = Money::fromAmount('3', Currency::fromCode('EUR'));
-        $expected2 = Money::fromAmount('3.33', Currency::fromCode('EUR'));
+        $money = Money::fromAmount('3.33333333333', Currency::fromIsoCode('EUR'));
+        $expected1 = Money::fromAmount('3', Currency::fromIsoCode('EUR'));
+        $expected2 = Money::fromAmount('3.33', Currency::fromIsoCode('EUR'));
 
         $this->assertTrue($money->round()->equals($expected1));
         $this->assertTrue($money->round(2)->equals($expected2));
@@ -242,9 +242,9 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testRoundWithRounding()
     {
-        $money = Money::fromAmount('3.9843', Currency::fromCode('EUR'));
-        $expected1 = Money::fromAmount('4', Currency::fromCode('EUR'));
-        $expected2 = Money::fromAmount('3.98', Currency::fromCode('EUR'));
+        $money = Money::fromAmount('3.9843', Currency::fromIsoCode('EUR'));
+        $expected1 = Money::fromAmount('4', Currency::fromIsoCode('EUR'));
+        $expected2 = Money::fromAmount('3.98', Currency::fromIsoCode('EUR'));
 
         $this->assertTrue($money->round()->equals($expected1));
         $this->assertTrue($money->round(2)->equals($expected2));
@@ -257,8 +257,8 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function convertTo()
     {
-        $money = Money::fromAmount('100', Currency::fromCode('EUR'));
-        $usd = Currency::fromCode('USD');
+        $money = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
+        $usd = Currency::fromIsoCode('USD');
 
         $expected = Money::fromAmount('150', $usd);
 
@@ -274,13 +274,13 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testComparison()
     {
-        $euro1 = Money::fromAmount('100', Currency::fromCode('EUR'));
-        $euro2 = Money::fromAmount('200', Currency::fromCode('EUR'));
-        $euro3 = Money::fromAmount('100', Currency::fromCode('EUR'));
-        $euro4 = Money::fromAmount('0', Currency::fromCode('EUR'));
-        $euro5 = Money::fromAmount('-100', Currency::fromCode('EUR'));
-        $euro6 = Money::fromAmount('1.1111', Currency::fromCode('EUR'));
-        $euro7 = Money::fromAmount('1.2222', Currency::fromCode('EUR'));
+        $euro1 = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
+        $euro2 = Money::fromAmount('200', Currency::fromIsoCode('EUR'));
+        $euro3 = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
+        $euro4 = Money::fromAmount('0', Currency::fromIsoCode('EUR'));
+        $euro5 = Money::fromAmount('-100', Currency::fromIsoCode('EUR'));
+        $euro6 = Money::fromAmount('1.1111', Currency::fromIsoCode('EUR'));
+        $euro7 = Money::fromAmount('1.2222', Currency::fromIsoCode('EUR'));
 
         $this->assertTrue($euro2->isGreaterThan($euro1));
         $this->assertFalse($euro1->isGreaterThan($euro2));
@@ -309,10 +309,10 @@ final class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testPositivity()
     {
-        $euro1 = Money::fromAmount('100', Currency::fromCode('EUR'));
-        $euro2 = Money::fromAmount('0', Currency::fromCode('EUR'));
-        $euro3 = Money::fromAmount('-100', Currency::fromCode('EUR'));
-        $euro4 = Money::fromAmount('0.0001', Currency::fromCode('EUR'));
+        $euro1 = Money::fromAmount('100', Currency::fromIsoCode('EUR'));
+        $euro2 = Money::fromAmount('0', Currency::fromIsoCode('EUR'));
+        $euro3 = Money::fromAmount('-100', Currency::fromIsoCode('EUR'));
+        $euro4 = Money::fromAmount('0.0001', Currency::fromIsoCode('EUR'));
 
         $this->assertTrue($euro1->isPositive());
         $this->assertFalse($euro1->isNegative());

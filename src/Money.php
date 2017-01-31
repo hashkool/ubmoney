@@ -60,7 +60,7 @@ class Money
      */
     public static function __callStatic($method, $arguments)
     {
-        return new static($arguments[0], Currency::fromCode($method));
+        return new static($arguments[0], Currency::fromIsoCode($method));
     }
 
     /**
