@@ -22,6 +22,7 @@ class Money
      * The money amount
      *
      * @var string
+     * @Column(type="decimal", precision=18, scale=8)
      */
     protected $amount;
 
@@ -29,6 +30,7 @@ class Money
      * The amount currency
      *
      * @var Currency
+     * @Embedded(class="Currency", columnPrefix="currency_")
      */
     protected $currency;
 
