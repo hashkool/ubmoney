@@ -1,3 +1,8 @@
+### 3.0.0
+  * Provide doctrine annotations for database mappings
+  * Increse decimal precision to 8 for bitcoin for calculations
+  * Rename code to isoCode in class members
+
 ### 1.1.1 (2015-03-03)
   * Fix typos in docs and docblocks
   * Add this CHANGELOG
