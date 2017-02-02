@@ -25,5 +25,11 @@
         "psr-4": {
             "Celtric\\UbMoney\\": "tests/"
         }
-    }
+    },
+
+    "extra": {
+        "branch-alias": {
+            "dev-master": "master"
+        }
+}
 }
