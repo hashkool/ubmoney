@@ -11,13 +11,16 @@
 
 namespace Celtric\UbMoney;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/** @ORM\Embeddable */
 class Currency
 {
     /**
      * Currency identifying 3 letter ISO code
      *
      * @var string
-     * @Column(type="string", length=3)
+     * @ORM\Column(type="string", length=3)
      */
     private $isoCode;
 

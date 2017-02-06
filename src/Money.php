@@ -11,6 +11,9 @@
 
 namespace Celtric\UbMoney;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/** @ORM\Embeddable */
 class Money
 {
     /**
@@ -22,7 +25,7 @@ class Money
      * The money amount
      *
      * @var string
-     * @Column(type="decimal", precision=18, scale=8)
+     * @ORM\Column(type="decimal", precision=18, scale=8)
      */
     protected $amount;
 
@@ -30,7 +33,7 @@ class Money
      * The amount currency
      *
      * @var Currency
-     * @Embedded(class="Currency", columnPrefix="currency_")
+     * @ORM\Embedded(class="Currency", columnPrefix="currency_")
      */
     protected $currency;
 
