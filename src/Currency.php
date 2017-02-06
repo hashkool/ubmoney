@@ -11,6 +11,7 @@
 
 namespace Celtric\UbMoney;
 
+/** @Embeddable */
 class Currency
 {
     /**
